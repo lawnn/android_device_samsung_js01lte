@@ -42,10 +42,10 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02900000 --tags_offset 0x02700000
 BOARD_KERNEL_SEPARATED_DT := true
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/hlte/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/hltedcm/mkbootimg.mk
 
 # Graphics
-BOARD_EGL_CFG := device/samsung/hlte/egl.cfg
+BOARD_EGL_CFG := device/samsung/hltedcm/egl.cfg
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
@@ -83,7 +83,7 @@ BOARD_USES_LEGACY_ALSA_AUDIO :=
 TARGET_QCOM_AUDIO_VARIANT := caf
 
 # Audio settings
-BOARD_USES_CUSTOM_AUDIO_PLATFORM_PATH := device/samsung/hlte/audio/platform
+BOARD_USES_CUSTOM_AUDIO_PLATFORM_PATH := device/samsung/hltedcm/audio/platform
 AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_DISABLED_FM := true
 AUDIO_FEATURE_DISABLED_ANC_HEADSET := true

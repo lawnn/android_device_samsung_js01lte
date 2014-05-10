@@ -1,4 +1,4 @@
-$(call inherit-product, device/samsung/hlte/full_hlte.mk)
+$(call inherit-product, device/samsung/hltedcm/full_hlte.mk)
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/gsm.mk)
