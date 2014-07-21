@@ -9,24 +9,11 @@ on init
 # NFC
     symlink /dev/felica_cen /dev/snfc_cen
 
-on init
-
 #    export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/framework2.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/mms-common.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar:/system/framework/sec_edm.jar:/system/framework/seccamera.jar:/system/framework/scrollpause.jar:/system/framework/stayrotation.jar:/system/framework/smartfaceservice.jar:/system/framework/secocsp.jar:/system/framework/abt-persistence.jar:/system/framework/sc.jar:/system/framework/oem-services.jar:/system/framework/commonimsinterface.jar
-
-#For Absolute Persistence Partition
-    mkdir /persdata 0755 system system
-    mkdir /persdata/absolute 0750 system system
-
-    wait /dev/block/platform/msm_sdcc.1/by-name/persdata
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persdata /persdata/absolute nosuid nodev barrier=1
-    chown system system /persdata
-    chmod 0755 /persdata
-    chown system system /persdata/absolute
-    chmod 0750 /persdata/absolute
 
 on post-fs-data
 	# for felica
-    exec /sbin/felica_init.sh
+#    exec /sbin/felica_init.sh
 
 #FSI {Tmm] Add Start (121224)
 #    mkdir /data/mmb
@@ -83,10 +70,36 @@ on post-fs-data
  #   chmod 0775 /data/longlife
 
 # JPN: For /efs/imei folder permission
-    chown radio radio /efs/imei
-    chmod 0775 /efs/imei
+#    chown radio radio /efs/imei
+#    chmod 0775 /efs/imei
 
 on boot
+# permission for Input Device(Touchkey).
+    chmod 0660 /sys/class/input/input2/enabled
+    chown system system /sys/class/input/input2/enabled
+    chown radio system /sys/class/sec/sec_touchkey/touch_sensitivity
+    chown radio system /sys/class/sec/sec_touchkey/touchkey_firm_update
+    chown system radio /sys/class/sec/sec_touchkey/glove_mode
+    chown system radio /sys/class/sec/sec_touchkey/flip_mode
+    chown system radio /sys/class/sec/sec_touchkey/boost_level
+
+# permission for Input Device(Wacom).
+    chmod 0660 /sys/class/input/input4/enabled
+    chown system system /sys/class/input/input4/enabled
+    chown system system /sys/class/input/input18/enabled
+
+# permissions for S-Pen
+    chmod 0660 /sys/class/input/input3/enabled
+    chown system system /sys/class/input/input3/enabled
+    chown system radio /sys/class/sec/sec_epen/epen_firm_update
+    chown system radio /sys/class/sec/sec_epen/epen_rotation
+    chown system radio /sys/class/sec/sec_epen/epen_hand
+    chown system radio /sys/class/sec/sec_epen/epen_reset
+    chown system radio /sys/class/sec/sec_epen/epen_reset_result
+    chown system radio /sys/class/sec/sec_epen/epen_checksum
+    chown system radio /sys/class/sec/sec_epen/epen_checksum_result
+    chown system radio /sys/class/sec/sec_epen/epen_saving_mode
+    chown system radio /sys/class/sec/sec_epen/boost_level
 
 # permissions for bluetooth.
     setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
@@ -98,21 +111,31 @@ on boot
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
 # bluetooth LPM
-    chmod 0220 /proc/bluetooth/sleep/lpm
+    chmod 0660 /proc/bluetooth/sleep/lpm
     chmod 0220 /proc/bluetooth/sleep/btwrite
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
     chmod 0600 /dev/btlock
     chown bluetooth bluetooth /dev/btlock
 
-# Permissions for InputDevices.
-    chmod 0660 /sys/class/input/input2/enabled
-    chmod 0660 /sys/class/input/input3/enabled
-    chmod 0660 /sys/class/input/input22/enabled
-    chown system system /sys/class/input/input2/enabled
-    chown system system /sys/class/input/input3/enabled
-    chown system system /sys/class/input/input22/enabled
-    chown system system /sys/class/sec/sec_touchkey/brightness
+on fs
+
+# Support Preload install apks
+    mkdir /preload 0771 system system
+
+#For Absolute Persistence Partition
+
+     mkdir /persdata 0755 system system
+     mkdir /persdata/absolute 0750 system system
+
+     wait /dev/block/platform/msm_sdcc.1/by-name/persdata
+     check_fs /dev/block/platform/msm_sdcc.1/by-name/persdata ext4
+     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persdata /persdata/absolute nosuid nodev barrier=1
+
+     chown system system /persdata
+     chmod 0755 /persdata
+     chown system system /persdata/absolute
+     chmod 0750 /persdata/absolute
 
 # bluetooth dhcp config
 service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
@@ -126,16 +149,16 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     oneshot
 
 # Felica
-service mfsc /system/bin/mfsc
-    class core
-    user root
-    group system
-    oneshot
-service mfdp /system/bin/mfdp
-    class core
-    user root
-    group system
-    oneshot
+#service mfsc /system/bin/mfsc
+#    class core
+#    user root
+#    group system
+#    oneshot
+#service mfdp /system/bin/mfdp
+#    class core
+#    user root
+#    group system
+#    oneshot
 
 # JPN: Create folder for Remote Lock service
     mkdir /data/system 0775 system system
