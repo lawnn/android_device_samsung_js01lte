@@ -8,4 +8,3 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 PRODUCT_DEVICE := hltedcm
 PRODUCT_NAME := cm_hltedcm
-
