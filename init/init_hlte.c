@@ -87,8 +87,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.cdma.home.operator.numeric", "311480");
     } else if (strstr(bootloader, "SC01F")) {
         /* hltedcm */
-        property_set("ro.build.fingerprint", "samsung/SC-01F/SC-01F:4.3/JSS15J/SC01FOMUBMIF:user/release-keys");
-        property_set("ro.build.description", "hltedcm-user 4.3 JSS15J SC01FOMUBMIF release-keys");
+        property_set("ro.build.fingerprint", "samsung/SC-01F/SC-01F:4.4.2/KOT49H/SC01FOMUFNF6:user/release-keys");
+        property_set("ro.build.description", "hltedcm-user 4.4.2 KOT49H SC01FOMUFNF6 release-keys");
         property_set("ro.product.model", "SC-01F");
         property_set("ro.product.device", "SC-01F");
         property_set("ro.telephony.ril.v3", "newDialCode");
