@@ -17,6 +17,9 @@
 
 TARGET_OTA_ASSERT_DEVICE := SC01F,hltedcm
 
+# Kernel
+TARGET_KERNEL_VARIANT_CONFIG := kbc_sc01f_aosp_defconfig
+
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_LIBINIT_DEFINES_FILE := device/samsung/hltedcm/init/init_hlte.c
