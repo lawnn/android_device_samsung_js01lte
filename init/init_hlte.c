@@ -61,7 +61,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.description", "hltedcm-user 4.4.2 KOT49H SC01FOMUFNF6 release-keys");
         property_set("ro.product.model", "SC-01F");
         property_set("ro.product.device", "SC-01F");
-        property_set("ro.telephony.ril.v3", "newDialCode");
+        property_set("ro.telephony.ril.config", "newDriverCall,newDialCode");
     }
 
     property_get("ro.product.device", device);
