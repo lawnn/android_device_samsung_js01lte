@@ -57,7 +57,7 @@ import com.android.internal.telephony.uicc.IccCardStatus;
  * Handles most GSM and CDMA cases.
  * {@hide}
  */
-public class HlteRIL extends RIL implements CommandsInterface {
+public class hlteRIL extends RIL implements CommandsInterface {
 
     private AudioManager mAudioManager;
 
@@ -74,12 +74,12 @@ public class HlteRIL extends RIL implements CommandsInterface {
 
     private Message mPendingGetSimStatus;
 
-    public HlteRIL(Context context, int preferredNetworkType,
+    public hlteRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         this(context, preferredNetworkType, cdmaSubscription);
     }
 
-    public HlteRIL(Context context, int networkMode,
+    public hlteRIL(Context context, int networkMode,
             int cdmaSubscription) {
         super(context, networkMode, cdmaSubscription);
         mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
