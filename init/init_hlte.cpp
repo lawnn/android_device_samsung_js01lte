@@ -38,16 +38,15 @@
 
 void gsm_properties()
 {
-    property_set("ro.telephony.default_network", "9");
     property_set("telephony.lteOnGsmDevice", "1");
+    property_set("ro.telephony.default_network", "9");
+    property_set("ro.telephony.ril.config", "newDialCode");
+    property_set("ro.ril.enable.dcm.feature", "1");
 }
 
 void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
     char platform[PROP_VALUE_MAX];
-    char bootloader[PROP_VALUE_MAX];
-    char device[PROP_VALUE_MAX];
-    char devicename[PROP_VALUE_MAX];
     int rc;
 
     UNUSED(msm_id);
@@ -58,18 +57,9 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     if (!rc || !ISMATCH(platform, ANDROID_TARGET))
         return;
 
-    property_get("ro.bootloader", bootloader);
-	gsm_properties();
-    if (strstr(bootloader, "SC01F")) {
-        /* hltedcm */
-        property_set("ro.build.fingerprint", "samsung/SC-01F/SC-01F:4.4.2/KOT49H/SC01FOMUFNF6:user/release-keys");
-        property_set("ro.build.description", "hltedcm-user 4.4.2 KOT49H SC01FOMUFNF6 release-keys");
-        property_set("ro.product.model", "SC-01F");
-        property_set("ro.product.device", "SC-01F");
-        //property_set("ro.telephony.ril.config", "newDriverCallU,newDialCode");
-    }
-
-    property_get("ro.product.device", device);
-    strlcpy(devicename, device, sizeof(devicename));
-    ERROR("Found bootloader id %s setting build properties for %s device\n", bootloader, devicename);
+    property_set("ro.build.fingerprint", "samsung/SC-01F/SC-01F:5.0/LRX21V/SC01FOMUGOI4:user/release-keys");
+    property_set("ro.build.description", "hltedcm-user 5.0 LRX21V SC01FOMUGOI4 release-keys");
+    property_set("ro.product.model", "SC-01F");
+    property_set("ro.product.device", "SC-01F");
+    gsm_properties();
 }
