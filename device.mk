@@ -33,6 +33,7 @@ DEVICE_NFC_SONY=yes
 
 # Ramdisk for FeliCa
 PRODUCT_PACKAGES += \
+    FeliCaLock \
     init.carrier.rc \
     init.felica.sh
 
