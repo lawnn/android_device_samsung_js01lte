@@ -1,6 +1,10 @@
 [
   {
-    "repository": "android_device_samsung_hlte-common",
-    "target_path": "device/samsung/hlte-common"
+    "repository": "android_device_samsung_js01lte-common",
+    "target_path": "device/samsung/js01lte-common"
+  },
+  {
+    "repository": "proprietary_vendor_samsung",
+    "target_path": "vendor/samsung"
   }
 ]

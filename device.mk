@@ -17,9 +17,9 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/samsung/hltedcm/hltedcm-vendor.mk)
-$(call inherit-product-if-exists, vendor/samsung/hltedcm-felica/hltedcm-felica-vendor.mk)
-$(call inherit-product-if-exists, vendor/samsung/hltedcm-oneseg/hltedcm-oneseg-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/js01lte/js01lte-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/js01lte-felica/js01lte-felica-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/js01lte-oneseg/js01lte-oneseg-vendor.mk)
 
 # One-seg
 #PRODUCT_PACKAGES += \
@@ -42,6 +42,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml
 
-# Common hlte
-$(call inherit-product, device/samsung/hlte-common/hlte.mk)
+# Common js01lte
+$(call inherit-product, device/samsung/js01lte-common/js01lte.mk)
 

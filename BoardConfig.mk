@@ -12,17 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from common hlte
--include device/samsung/hlte-common/BoardConfigCommon.mk
+# inherit from common js01lte
+-include device/samsung/js01lte-common/BoardConfigCommon.mk
 
-TARGET_OTA_ASSERT_DEVICE := SC01F,hltedcm
-
-# Kernel
-TARGET_KERNEL_VARIANT_CONFIG := kbc_sc01f_aosp_defconfig
+TARGET_OTA_ASSERT_DEVICE := SC02F,js01lte
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/samsung/hltedcm/init/init_hlte.cpp
+TARGET_LIBINIT_DEFINES_FILE := device/samsung/js01lte/init/init_js01lte.cpp
 TARGET_UNIFIED_DEVICE := true
 
 # NFC
@@ -34,7 +31,6 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 13631488
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1572864000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 28651290624
 BOARD_FLASH_BLOCK_SIZE := 131072
-TARGET_USERIMAGES_USE_EXT4 := true
 
 # inherit from the proprietary version
--include vendor/samsung/hltedcm/BoardConfigVendor.mk
+-include vendor/samsung/js01lte/BoardConfigVendor.mk

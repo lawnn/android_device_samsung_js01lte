@@ -57,9 +57,10 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     if (!rc || !ISMATCH(platform, ANDROID_TARGET))
         return;
 
-    property_set("ro.build.fingerprint", "samsung/SC-01F/SC-01F:5.0/LRX21V/SC01FOMUGOI4:user/release-keys");
-    property_set("ro.build.description", "hltedcm-user 5.0 LRX21V SC01FOMUGOI4 release-keys");
-    property_set("ro.product.model", "SC-01F");
-    property_set("ro.product.device", "SC-01F");
+    property_set("ro.build.fingerprint", "samsung/SC-02F/SC-02F:5.0/LRX21V/SC02FOMUGOI4:user/release-keys");
+    property_set("ro.build.description", "hltejs01dcm-user 5.0 LRX21V SC02FOMUGOI4 release-keys");
+    property_set("ro.product.model", "SC-02F");
+    property_set("ro.product.device", "SC-02F");
+    property_set("persist.radio.dcmlte", "true");
     gsm_properties();
 }
