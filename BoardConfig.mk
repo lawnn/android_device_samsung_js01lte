@@ -30,5 +30,11 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 28651290624
 BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_USERIMAGES_USE_EXT4 := true
 
+# Bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/samsung/js01lte/bluetooth/vnd_sc02f.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/js01lte/bluetooth
+BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
+BOARD_HAVE_BLUETOOTH_BCM := true
+
 # inherit from the proprietary version
 -include vendor/samsung/js01lte/BoardConfigVendor.mk
