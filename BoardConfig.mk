@@ -22,6 +22,9 @@ TARGET_INIT_VENDOR_LIB := libinit_msm8974
 TARGET_LIBINIT_MSM8974_DEFINES_FILE := device/samsung/js01lte/init/init_js01lte.cpp
 TARGET_UNIFIED_DEVICE := true
 
+# Kernel
+TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_js01lte_dcm_defconfig
+
 # Bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/samsung/js01lte/bluetooth/vnd_sc02f.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/js01lte/bluetooth
