@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,18 +14,13 @@
 # limitations under the License.
 #
 
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.ota.romname=temasek-hlte \
-    ro.ota.version=$(shell date +%F | sed s@-@@g) \
-    ro.ota.manifest=http://temasek.rajasthanautoworks.in/ota/cm13/hlte.xml
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/samsung/hlte/hlte-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/js01lte/js01lte-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# Common hlte
+# Common hlte,js01lte
 $(call inherit-product, device/samsung/hlte-common/hlte.mk)
